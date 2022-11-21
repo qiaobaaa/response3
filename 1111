@@ -28,3 +28,38 @@ unsigned char ccc = 2;
 			printf("----------%d\n", i);
 		}
 	}
+l = []
+
+import re
+def print_hi():
+    with open("anno.txt",'r',encoding='utf-8')as f:
+        with open("gene.txt", 'r', encoding='utf-8')as f1:
+            for i in f:
+                pattern = re.compile('\s[0-9]+')
+                res = pattern.findall(i)
+                #print(len(res))
+                for j in f1:
+                    #print(i)
+                    pattern1 = re.compile('\s[0-9]+')
+                    res1 = pattern1.findall(j)
+                    #print(len(res1))
+                    #print(i)
+                    #print(j)
+                    #检查两个是不是完全相同或者颠倒相同
+                    if len(res1)==2 and len(res)==2:
+                        print(res)
+                        print(res1)
+                        if (res[0]==res1[0] and res[1]==res1[1]) or (res[0]==res1[1] and res[1]==res1[0]) :
+                            l.append(i[0:len(i)-1]+'        '+j)
+    for i in l:
+        #打印保存的结果
+        print(9999999)
+        print(i)
+    for i in range(len(l)):
+        with open('对比结果.txt', 'a') as f:
+            #将结果输出到对比结果.txt
+            f.write(l[i] + "\n")
+
+if __name__ == '__main__':
+
+    print_hi()
